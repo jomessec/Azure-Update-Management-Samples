@@ -1,9 +1,9 @@
 # Azure Update Management samples
 
-### Terraform Samples
+## Deploy an Azure Update Management environment with Terraform Samples
 **Terraform/DeployUpdateManagementLab**
 
-This sample deploys the necessary bits to enable Azure Update Management in your subscription. Information on how to configure Terraform to connect to your Azure subscription can be found [here](https://www.terraform.io/docs/providers/azurerm/auth/service_principal_client_secret.html).
+This deploys an Azure Update Management Hands-On Lab (HOL)  into a resource group in your subscription. 
 
 This deployment:
 
@@ -18,7 +18,9 @@ This deployment:
     * tags each with a patch_window tag so they will be picked up by a deployment schedule
  * creates weekly patch schedules that run on Saturday and Sunday, targeting Linux VMs with tags _patch_window=saturday_ and _patch_window=sunday_ respectively
  
-#### Getting Started
+### Getting Started
+
+#### One-Time Setup
  To get started, open up a cloud shell in Azure and clone this repository:
 * *git clone https://github.com/jomessec/Azure-Update-Management-Samples.git*
 * change directories to Terraform/DepoyUpdateManagementLab in the repository
@@ -33,6 +35,8 @@ This deployment:
       * tenant_id           = "TENANT"
 
 * *terraform init*
+
+#### Deploying The lab
 * now we're ready to deploy the lab:
    * *terrafrom apply*
    * Follow the prompt for resource group and VM root name. By default 3 VMs will be created from the root name, but this can be changed by passing in variable names.
