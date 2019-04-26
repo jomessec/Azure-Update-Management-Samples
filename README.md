@@ -18,7 +18,7 @@ This deployment:
     * tags each with a patch_window tag so they will be picked up by a deployment schedule
  * creates weekly patch schedules that run on Saturday and Sunday, targeting Linux VMs with tags _patch_window=saturday_ and _patch_window=sunday_ respectively
  
-
+#### Getting Started
  To get started, open up a cloud shell in Azure and clone this repository:
 * *git clone https://github.com/jomessec/Azure-Update-Management-Samples.git*
 * change directories to Terraform/DepoyUpdateManagementLab in the repository
