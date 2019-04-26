@@ -62,3 +62,17 @@ resource "azurerm_log_analytics_solution" "update_solution" {
     product   = "OMSGallery/Updates"
   }
 }
+
+# enable the Azure Change Tracking solution
+resource "azurerm_log_analytics_solution" "changetracking_solution" {
+  solution_name         = "ChangeTracking"
+  location              = "${azurerm_resource_group.resource_group.location}"
+  resource_group_name   = "${azurerm_resource_group.resource_group.name}"
+  workspace_resource_id = "${azurerm_log_analytics_workspace.workspace.id}"
+  workspace_name        = "${azurerm_log_analytics_workspace.workspace.name}"
+
+  plan {
+    publisher = "Microsoft"
+    product   = "OMSGallery/ChangeTracking"
+  }
+}
