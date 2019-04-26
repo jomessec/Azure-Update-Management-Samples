@@ -20,3 +20,6 @@ This deployment:
 
  To get started, open up a cloud shell in Azure and clone this repository:
 >*git clone https://github.com/jomessec/Azure-Update-Management-Samples.git*
+>change directories to DepoyUpdateManagementLab
+>*terraform init*
+>*terrafrom apply*
