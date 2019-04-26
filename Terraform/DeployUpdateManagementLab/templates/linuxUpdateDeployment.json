@@ -1,0 +1,85 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "automationAccountName": {
+            "type": "string"
+        },
+        "updateManagementScheduleName": {
+            "type": "string"
+        },
+        "updateManagementScheduleDay": {
+            "type": "string",
+            "defaultValue": "Sunday"
+        },
+        "startDate": {
+            "type": "string"
+        },
+        "scope": {
+            "type": "string"
+        }
+    },
+    "variables": {
+    },
+    "resources": [
+    {
+        "apiVersion": "2017-05-15-preview",
+        "type": "Microsoft.Automation/automationAccounts/softwareUpdateConfigurations",
+        "name": "[concat(parameters('automationAccountName'), '/', parameters('updateManagementScheduleName'))]",
+        "location": "[parameters('location')]",
+        "properties": {
+            "updateConfiguration": {
+                "operatingSystem": "Linux",
+                "duration": "PT2H0M",
+                "linux": {
+                    "IsInvalidPackageNameMasks": false,
+                    "excludedPackageNameMasks": [],
+                    "includedPackageClassifications": "Critical, Security, Other",
+                    "includedPackageNameMasks": [],
+                    "rebootSetting": "IfRequired"
+                },
+                "azureVirtualMachines": [],
+                "nonAzureComputerNames": [],
+                "targets": {
+                    "azureQueries": [
+                        { 
+                            "scope": [
+                                "[parameters('scope')]"                            ],
+                            "locations": [],
+
+                            "tagSettings": {
+                                "tags": {
+                                    "patch_window": [
+                                        "sunday"
+                                    ]
+                                }, 
+                                "filterOperator": "All"
+                            }
+                        }
+                    ],
+                    "nonAzureQueries": []
+                }
+            },
+
+            "scheduleInfo": {
+                "frequency": "Week",
+                "startTime": "[parameters('startDate')]",
+                "timeZone": "America/Los_Angeles",
+                "interval": 1,
+                "expiryTime": "9999-12-31T00:00:00-00:00",
+                "advancedSchedule": {
+                    "weekDays": [
+                        "[parameters('updateManagementScheduleDay')]"
+                    ]
+                }
+            },
+            "tasks": {
+                "preTask": null,
+                "postTask": null
+            }
+        }
+    }]
+ }
