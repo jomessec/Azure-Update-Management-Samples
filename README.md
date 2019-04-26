@@ -1,6 +1,6 @@
 # Azure Update Management samples
 
-## Deploy an Azure Update Management environment with Terraform Samples
+## Deploy an Azure Update Management environment with Terraform
 **Terraform/DeployUpdateManagementLab**
 
 This deploys an Azure Update Management Hands-On Lab (HOL)  into a resource group in your subscription. 
