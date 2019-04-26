@@ -19,7 +19,18 @@ This deployment:
  
 
  To get started, open up a cloud shell in Azure and clone this repository:
->*git clone https://github.com/jomessec/Azure-Update-Management-Samples.git*
->change directories to DepoyUpdateManagementLab
->*terraform init*
->*terrafrom apply*
+* *git clone https://github.com/jomessec/Azure-Update-Management-Samples.git*
+* change directories to Terraform/DepoyUpdateManagementLab in the repository
+* set up client secrets as described [here](https://www.terraform.io/docs/providers/azurerm/auth/service_principal_client_secret.html)
+   * find the subscription you want to deploy to from *az account list*
+   * create a service principal to use for deployments
+      * *az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/SUBSCRIPTIONID"
+   * create a file azureSecrets.tfvars and put the following rows in it, replacing the values from the previous steps:
+      * subscription_id = "<SUBSCRIPTIONID>"
+      * client_secret       = "<PASSWORD>"
+      * client_id           = "<APPID>"
+      * tenant_id           = "<TENANT>"
+
+* *terraform init*
+* *terrafrom apply*
+* follow the prompt for resource group and VM root name. By default 3 VMs will be created from the root name, but this can be changed by passing in variable names.

@@ -1,6 +1,6 @@
 # load the json template for linux update deployment
 data "template_file" "update_deployment_json" {
-  template = "${file("${path.module}/templates/linuxUpdatedeployment.json")}"
+  template = "${file("${path.module}/templates/linuxUpdateDeployment.json")}"
   vars = {}
 }
 

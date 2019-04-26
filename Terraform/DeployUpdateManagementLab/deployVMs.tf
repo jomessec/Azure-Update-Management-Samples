@@ -13,7 +13,7 @@ variable linux_vms_root_name {}
 #variable windows_vms_root_name {}
 
 module "deployLinuxVMs" {
-    source              = "/modules/deployLinuxVMs"
+    source              = "modules/deployLinuxVMs"
     vm_count            = "${var.vm_count}"
     vm_password         = "${var.vm_password}"
     vm_name             = "${var.linux_vms_root_name}"
