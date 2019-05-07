@@ -6,10 +6,11 @@ variable vm_location {
 }
 
 variable vm_password {
-    default = "This is a Passw0rd."
 }
 
-variable linux_vms_root_name {}
+variable linux_vms_root_name {
+    default = "linuxServer"
+}
 #variable windows_vms_root_name {}
 
 module "deployLinuxVMs" {
